@@ -40,14 +40,7 @@ public class TopicService {
 	}
 
 	public void updateTopic(String id, Topic topic) {
-		for (int i = 0; i < topics.size(); i++) {
-			Topic t = topics.get(i);
-			if (t.getId().equals(id)) {
-				topics.set(i, topic);
-				return;
-			}
-
-		}
+		topicRepository.save(topic); //it will check if it has the id, if yes it updates it 
 
 	}
 
