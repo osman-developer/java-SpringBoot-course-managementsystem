@@ -1,6 +1,15 @@
 package io.javaapi.course.topic;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Topic {
+	//that's how you tell JPA that this is the primary key
+	@Id
+	private String id;
+	private String name;
+	private String description;
 
 	public Topic() {
 
@@ -13,10 +22,7 @@ public class Topic {
 		this.description = description;
 	}
 
-	private String id;
-	private String name;
-	private String description;
-
+	
 	public String getId() {
 		return id;
 	}
