@@ -10,16 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class TopicService {
-	// when you add = new arraylist so it's mutable now so you can add to it, if
-	// don't do = new arraylist you will not be able to add to it
-
+	
 	@Autowired
 	private TopicRepository topicRepository;
 	// it will inject topicrepo in topicservice instance
-
-	private List<Topic> topics = new ArrayList<>(
-			Arrays.asList(new Topic("spring", "java springboot", "java springboot description"),
-					new Topic("javascript", "javascriot", "javascriot description")));
 
 	public List<Topic> getAllTopics() {
 		List<Topic> topics = new ArrayList<>();
@@ -28,10 +22,8 @@ public class TopicService {
 	}
 
 	public Topic getTopic(String id) {
-		//return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
-		
 		return topicRepository.findById(id).orElse(null);
-	
+
 	}
 
 	public void addTopic(Topic topic) {
@@ -40,12 +32,12 @@ public class TopicService {
 	}
 
 	public void updateTopic(String id, Topic topic) {
-		topicRepository.save(topic); //it will check if it has the id, if yes it updates it 
+		topicRepository.save(topic); // it will check if it has the id, if yes it updates it
 
 	}
 
 	public void deleteTopic(String id) {
-		topics.removeIf(t -> t.getId().equals(id));
+		topicRepository.deleteById(id);
 
 	}
 }
