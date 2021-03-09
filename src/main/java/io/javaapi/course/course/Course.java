@@ -1,10 +1,10 @@
-package io.javaapi.course.topic;
+package io.javaapi.course.course;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Topic {
+public class Course {
 	//it is the entity class
 	//that's how you tell JPA that this is the primary key
 	@Id
@@ -12,11 +12,11 @@ public class Topic {
 	private String name;
 	private String description;
 
-	public Topic() {
+	public Course() {
 
 	}
 
-	public Topic(String id, String name, String description) {
+	public Course(String id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;

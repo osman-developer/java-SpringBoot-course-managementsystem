@@ -1,4 +1,4 @@
-package io.javaapi.course.topic;
+package io.javaapi.course.course;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,36 +13,36 @@ import org.springframework.web.bind.annotation.RestController;
 import ch.qos.logback.classic.Logger;
 
 @RestController
-public class TopicController {
+public class CourseController {
 	//it is the api
 	
 	// this annotation is used for dependency injection
 	@Autowired
-	private TopicService topicService;
+	private CourseService topicService;
 
 	// get all topics
 	@RequestMapping(value = "/Topics", method = RequestMethod.GET)
-	public List<Topic> getAllTopics() {
+	public List<Course> getAllTopics() {
 		return topicService.getAllTopics();
 	}
 
 	// get a certain topic
 	@RequestMapping(value = "/Topics/{id}", method = RequestMethod.GET)
-	public Topic getTopic(@PathVariable String id) {
+	public Course getTopic(@PathVariable String id) {
 		return topicService.getTopic(id);
 
 	}
 
 	// add a certain topic read from body
 	@RequestMapping(value = "/Topics", method = RequestMethod.POST)
-	public void addTopic(@RequestBody Topic topic) {
+	public void addTopic(@RequestBody Course topic) {
 		topicService.addTopic(topic);
 
 	}
 
 	// update a certain topic read from body
 	@RequestMapping(value = "/Topics/{id}", method = RequestMethod.PUT)
-	public void updateTopic(@RequestBody Topic topic, @PathVariable String id) {
+	public void updateTopic(@RequestBody Course topic, @PathVariable String id) {
 		topicService.updateTopic(id, topic);
 
 	}

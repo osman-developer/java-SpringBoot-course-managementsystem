@@ -1,4 +1,4 @@
-package io.javaapi.course.topic;
+package io.javaapi.course.course;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,29 +9,29 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
-public class TopicService {
+public class CourseService {
 	// it is the BLC
 	@Autowired
-	private TopicRepository topicRepository;
+	private CourseRepository topicRepository;
 	// it will inject topicrepo in topicservice instance
 
-	public List<Topic> getAllTopics() {
-		List<Topic> topics = new ArrayList<>();
+	public List<Course> getAllTopics() {
+		List<Course> topics = new ArrayList<>();
 		topicRepository.findAll().forEach(topics::add);
 		return topics;
 	}
 
-	public Topic getTopic(String id) {
+	public Course getTopic(String id) {
 		return topicRepository.findById(id).orElse(null);
 
 	}
 
-	public void addTopic(Topic topic) {
+	public void addTopic(Course topic) {
 		topicRepository.save(topic);
 
 	}
 
-	public void updateTopic(String id, Topic topic) {
+	public void updateTopic(String id, Course topic) {
 		topicRepository.save(topic); // it will check if it has the id, if yes it updates it
 
 	}
