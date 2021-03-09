@@ -18,39 +18,39 @@ public class CourseController {
 	
 	// this annotation is used for dependency injection
 	@Autowired
-	private CourseService topicService;
+	private CourseService courseService;
 
 	// get all topics
 	@RequestMapping(value = "/Topics", method = RequestMethod.GET)
 	public List<Course> getAllTopics() {
-		return topicService.getAllTopics();
+		return courseService.getAllTopics();
 	}
 
 	// get a certain topic
 	@RequestMapping(value = "/Topics/{id}", method = RequestMethod.GET)
 	public Course getTopic(@PathVariable String id) {
-		return topicService.getTopic(id);
+		return courseService.getTopic(id);
 
 	}
 
 	// add a certain topic read from body
 	@RequestMapping(value = "/Topics", method = RequestMethod.POST)
 	public void addTopic(@RequestBody Course topic) {
-		topicService.addTopic(topic);
+		courseService.addTopic(topic);
 
 	}
 
 	// update a certain topic read from body
 	@RequestMapping(value = "/Topics/{id}", method = RequestMethod.PUT)
 	public void updateTopic(@RequestBody Course topic, @PathVariable String id) {
-		topicService.updateTopic(id, topic);
+		courseService.updateTopic(id, topic);
 
 	}
 
 	// delete a certain topic
 	@RequestMapping(value = "/Topics/{id}", method = RequestMethod.DELETE)
 	public void deleteTopic(@PathVariable String id) {
-		topicService.deleteTopic(id);
+		courseService.deleteTopic(id);
 
 	}
 
