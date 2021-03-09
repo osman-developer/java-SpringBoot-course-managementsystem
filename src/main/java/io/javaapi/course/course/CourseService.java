@@ -15,28 +15,28 @@ public class CourseService {
 	private CourseRepository courseRepository;
 	// it will inject topicrepo in topicservice instance
 
-	public List<Course> getAllTopics() {
-		List<Course> topics = new ArrayList<>();
-		courseRepository.findAll().forEach(topics::add);
-		return topics;
+	public List<Course> getAllCourses(String id) {
+		List<Course> courses = new ArrayList<>();
+		courseRepository.findAll().forEach(courses::add);
+		return courses;
 	}
 
-	public Course getTopic(String id) {
+	public Course getCourse(String id) {
 		return courseRepository.findById(id).orElse(null);
 
 	}
 
-	public void addTopic(Course topic) {
-		courseRepository.save(topic);
+	public void addCourse(Course course) {
+		courseRepository.save(course);
 
 	}
 
-	public void updateTopic(String id, Course topic) {
-		courseRepository.save(topic); // it will check if it has the id, if yes it updates it
+	public void updateCourse(String id, Course course) {
+		courseRepository.save(course); // it will check if it has the id, if yes it updates it
 
 	}
 
-	public void deleteTopic(String id) {
+	public void deleteCourse(String id) {
 		courseRepository.deleteById(id);
 
 	}

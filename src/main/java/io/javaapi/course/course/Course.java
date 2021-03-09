@@ -3,6 +3,8 @@ package io.javaapi.course.course;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import io.javaapi.course.topic.Topic;
+
 @Entity
 public class Course {
 	//it is the entity class
@@ -11,19 +13,30 @@ public class Course {
 	private String id;
 	private String name;
 	private String description;
+	
+	private Topic topic;
 
+	
 	public Course() {
 
 	}
 
-	public Course(String id, String name, String description) {
+	public Course(String id, String name, String description,String topicID) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.topic = new Topic(topicID, "", "");
 	}
 
-	
+	public Topic getTopic() {
+		return topic;
+	}
+
+	public void setTopic(Topic topic) {
+		this.topic = topic;
+	}
+
 	public String getId() {
 		return id;
 	}

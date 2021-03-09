@@ -21,36 +21,36 @@ public class CourseController {
 	private CourseService courseService;
 
 	// get all topics
-	@RequestMapping(value = "/Topics", method = RequestMethod.GET)
-	public List<Course> getAllTopics() {
-		return courseService.getAllTopics();
+	@RequestMapping(value = "/topics/{id}/courses", method = RequestMethod.GET)
+	public List<Course> getAllCourses(@PathVariable String id) {
+		return courseService.getAllCourses(id);
 	}
 
 	// get a certain topic
-	@RequestMapping(value = "/Topics/{id}", method = RequestMethod.GET)
-	public Course getTopic(@PathVariable String id) {
-		return courseService.getTopic(id);
+	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.GET)
+	public Course getCourse(@PathVariable String id) {
+		return courseService.getCourse(id);
 
 	}
 
 	// add a certain topic read from body
-	@RequestMapping(value = "/Topics", method = RequestMethod.POST)
-	public void addTopic(@RequestBody Course topic) {
-		courseService.addTopic(topic);
+	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.POST)
+	public void addCourse(@RequestBody Course course) {
+		courseService.addCourse(course);
 
 	}
 
 	// update a certain topic read from body
-	@RequestMapping(value = "/Topics/{id}", method = RequestMethod.PUT)
-	public void updateTopic(@RequestBody Course topic, @PathVariable String id) {
-		courseService.updateTopic(id, topic);
+	@RequestMapping(value = "/Courses/{id}", method = RequestMethod.PUT)
+	public void updateCourse(@RequestBody Course course, @PathVariable String id) {
+		courseService.updateCourse(id, course);
 
 	}
 
 	// delete a certain topic
-	@RequestMapping(value = "/Topics/{id}", method = RequestMethod.DELETE)
-	public void deleteTopic(@PathVariable String id) {
-		courseService.deleteTopic(id);
+	@RequestMapping(value = "/Courses/{id}", method = RequestMethod.DELETE)
+	public void deleteCourse(@PathVariable String id) {
+		courseService.deleteCourse(id);
 
 	}
 
