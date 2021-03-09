@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.qos.logback.classic.Logger;
+import io.javaapi.course.topic.Topic;
 
 @RestController
 public class CourseController {
-	//it is the api
-	
+	// it is the api
+
 	// this annotation is used for dependency injection
 	@Autowired
 	private CourseService courseService;
@@ -34,21 +35,23 @@ public class CourseController {
 	}
 
 	// add a certain topic read from body
-	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.POST)
-	public void addCourse(@RequestBody Course course) {
+	@RequestMapping(value = "/topics/{topicId}/courses/", method = RequestMethod.POST)
+	public void addCourse(@RequestBody Course course, @PathVariable String topicId) {
+		course.setTopic(new Topic(topicId, "", ""));
 		courseService.addCourse(course);
 
 	}
 
 	// update a certain topic read from body
-	@RequestMapping(value = "/Courses/{id}", method = RequestMethod.PUT)
-	public void updateCourse(@RequestBody Course course, @PathVariable String id) {
-		courseService.updateCourse(id, course);
+	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.PUT)
+	public void updateCourse(@RequestBody Course course, @PathVariable String topicId,@PathVariable String id) {
+		course.setTopic(new Topic(topicId, "", ""));
+		courseService.updateCourse(course);
 
 	}
 
 	// delete a certain topic
-	@RequestMapping(value = "/Courses/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.DELETE)
 	public void deleteCourse(@PathVariable String id) {
 		courseService.deleteCourse(id);
 

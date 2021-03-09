@@ -31,7 +31,7 @@ public class CourseService {
 
 	}
 
-	public void updateCourse(String id, Course course) {
+	public void updateCourse(Course course) {
 		courseRepository.save(course); // it will check if it has the id, if yes it updates it
 
 	}
