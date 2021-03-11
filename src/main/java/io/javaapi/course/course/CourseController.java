@@ -33,7 +33,7 @@ public class CourseController {
 		return courseService.getCourse(id);
 
 	}
-	
+
 	// get a certain course by name
 	@RequestMapping(value = "/topics/{topicId}/courses/{name}", method = RequestMethod.GET)
 	public Course getCourseByName(@PathVariable String name) {
@@ -41,8 +41,7 @@ public class CourseController {
 
 	}
 
-
-	@RequestMapping(value = "/topics/{topicId}/courses/", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST, value = "/topics/{topicId}/courses")
 	public void addCourse(@RequestBody Course course, @PathVariable String topicId) {
 		course.setTopic(new Topic(topicId, "", ""));
 		courseService.addCourse(course);
@@ -51,7 +50,7 @@ public class CourseController {
 
 	// update a certain course read from body
 	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.PUT)
-	public void updateCourse(@RequestBody Course course, @PathVariable String topicId,@PathVariable String id) {
+	public void updateCourse(@RequestBody Course course, @PathVariable String topicId, @PathVariable String id) {
 		course.setTopic(new Topic(topicId, "", ""));
 		courseService.updateCourse(course);
 
