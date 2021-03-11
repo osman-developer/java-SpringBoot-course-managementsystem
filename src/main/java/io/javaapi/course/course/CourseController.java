@@ -21,16 +21,23 @@ public class CourseController {
 	@Autowired
 	private CourseService courseService;
 
-	// get all topics
+	// get all courses
 	@RequestMapping(value = "/topics/{id}/courses", method = RequestMethod.GET)
 	public List<Course> getAllCourses(@PathVariable String id) {
 		return courseService.getAllCourses(id);
 	}
 
-	// get a certain topic
+	// get a certain course
 	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.GET)
 	public Course getCourse(@PathVariable String id) {
 		return courseService.getCourse(id);
+
+	}
+	
+	// get a certain course by name
+	@RequestMapping(value = "/topics/{topicId}/courses/{name}", method = RequestMethod.GET)
+	public Course getCourseByName(@PathVariable String name) {
+		return courseService.getCourseByName(name);
 
 	}
 
@@ -42,7 +49,7 @@ public class CourseController {
 
 	}
 
-	// update a certain topic read from body
+	// update a certain course read from body
 	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.PUT)
 	public void updateCourse(@RequestBody Course course, @PathVariable String topicId,@PathVariable String id) {
 		course.setTopic(new Topic(topicId, "", ""));
@@ -50,7 +57,7 @@ public class CourseController {
 
 	}
 
-	// delete a certain topic
+	// delete a certain course
 	@RequestMapping(value = "/topics/{topicId}/courses/{id}", method = RequestMethod.DELETE)
 	public void deleteCourse(@PathVariable String id) {
 		courseService.deleteCourse(id);

@@ -26,6 +26,11 @@ public class CourseService {
 
 	}
 
+	public Course getCourseByName(String name) {
+		return (Course) courseRepository.findByName(name);
+
+	}
+
 	public void addCourse(Course course) {
 		courseRepository.save(course);
 
